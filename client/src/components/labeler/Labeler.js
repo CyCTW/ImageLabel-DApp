@@ -1,13 +1,18 @@
-import { AlertDialog, AlertDialogBody,AlertDialogHeader, AlertDialogContent, AlertDialogFooter, Button, Input, Text, useDisclosure, AlertDialogOverlay } from '@chakra-ui/react';
+import {  Button, Input, Text, useDisclosure, AlertDialogOverlay } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
+import ImageDialog from './ImageDialog';
+import RewardDialog from './RewardDialog';
 
 function Labeler({web3, account, contract}) {
     const [fileUrl, setFileUrl] = useState("")
     const [imgClass, setImgClass] = useState("")
     const [reward, setReward] = useState(0)
-    const [isImageExist, setIsImageExist] = useState(true)
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const cancelRef = React.useRef()
+    const [loading, setLoading] = useState(false)
+
+    // const { isOpen, onOpen, onClose } = useDisclosure()
+    const [ rewardDialogOpen, setRewardDialogOpen ] = useState(false)
+    const [ alertDialogOpen, setAlertDialogOpen] = useState(false)
+
     useEffect(async () => {
         if (fileUrl !== "") {  
             let res = await contract.methods.getImageReward(fileUrl).call();
@@ -24,8 +29,8 @@ function Labeler({web3, account, contract}) {
             setFileUrl(url)
         } catch (err) {
             console.log(err);
-            console.log("hihi")
-            onOpen();
+            // onOpen();
+            setAlertDialogOpen(true);
         }
         
     }
@@ -36,12 +41,15 @@ function Labeler({web3, account, contract}) {
     }
 
     const submitToContract = async() => {
+        setLoading(true);
         try {
             await contract.methods.uploadLabeledImage(fileUrl, imgClass).send({ from: account });
             console.log("success")
-            setReward(0)
             setFileUrl('')
             setImgClass('')
+            setLoading(false)
+            setRewardDialogOpen(true)
+
         } catch (err) {
             console.log(err)
         }
@@ -49,38 +57,26 @@ function Labeler({web3, account, contract}) {
 
     return (
         <>
+            <Text fontSize='lg' m='3'>1. Click 'Get image'</Text>
             <Button onClick={handleGetImage}>Get image</Button>
             {
                 fileUrl && (<img src={fileUrl} width="500px"/>)
             }
-            <Text m='3'>1. Answer the Class of image to earn money!</Text>
-            <Text>Earn Reward: {reward} ether</Text>
+            <Text fontSize='lg' m='3'>2. Answer the Class of image to earn money!</Text>
             <Input onChange={handleChange} value={imgClass}/>
-            <Button onClick={submitToContract}>Submit</Button>
-            <AlertDialog
-                isOpen={isOpen}
-                onClose={onClose}
-                leastDestructiveRef={cancelRef}
-            >
-                <AlertDialogOverlay>
-
-                <AlertDialogContent>
-                    <AlertDialogHeader>
-                        Warning
-                    </AlertDialogHeader>
-
-                    <AlertDialogBody>
-                        Currently there is no image in contract.
-                    </AlertDialogBody>
-                    <AlertDialogFooter>
-                        <Button ref={cancelRef} onClick={onClose} colorScheme='red'>
-                            Close
-                        </Button>
-                    </AlertDialogFooter>
-                </AlertDialogContent>
-                </AlertDialogOverlay>
-
-            </AlertDialog>
+            <Text as='i'>Earn Reward: {reward} ether</Text>
+            <br/>
+            <Button m='3' onClick={submitToContract} disabled={!fileUrl} isLoading={loading}>Submit</Button>
+            <ImageDialog
+              alertDialogOpen={alertDialogOpen}
+              setAlertDialogOpen={setAlertDialogOpen}
+            />
+            <RewardDialog
+              rewardDialogOpen={rewardDialogOpen}
+              setRewardDialogOpen={setRewardDialogOpen}
+              reward={reward}
+              setReward={setReward}
+            />
 
         </>
     )

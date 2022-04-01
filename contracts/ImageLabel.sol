@@ -48,7 +48,7 @@ contract ImageLabel {
         return r;
     }
 
-    function sendReward(string memory image_url) public {
+    function sendReward(string memory image_url) internal {
         uint reward = imgs[image_url].reward;
         bool success = payable(msg.sender).send(reward);
         require(success, "Failed to send ether.");
