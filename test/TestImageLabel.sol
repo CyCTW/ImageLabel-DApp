@@ -1,4 +1,3 @@
-
 // Currently I can't find way to send ether to smart contract, so the test will fail.
 /*
 pragma solidity ^0.6.0;
