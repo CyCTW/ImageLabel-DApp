@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/ImageLabel-DApp/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/ImageLabel-DApp/static/js/main.20c293f4.chunk.js",
-    "main.js.map": "/ImageLabel-DApp/static/js/main.20c293f4.chunk.js.map",
+    "main.js": "/ImageLabel-DApp/static/js/main.fdbaf7e1.chunk.js",
+    "main.js.map": "/ImageLabel-DApp/static/js/main.fdbaf7e1.chunk.js.map",
     "runtime-main.js": "/ImageLabel-DApp/static/js/runtime-main.c0afe411.js",
     "runtime-main.js.map": "/ImageLabel-DApp/static/js/runtime-main.c0afe411.js.map",
-    "static/js/2.9cf025fe.chunk.js": "/ImageLabel-DApp/static/js/2.9cf025fe.chunk.js",
-    "static/js/2.9cf025fe.chunk.js.map": "/ImageLabel-DApp/static/js/2.9cf025fe.chunk.js.map",
+    "static/js/2.41374764.chunk.js": "/ImageLabel-DApp/static/js/2.41374764.chunk.js",
+    "static/js/2.41374764.chunk.js.map": "/ImageLabel-DApp/static/js/2.41374764.chunk.js.map",
     "index.html": "/ImageLabel-DApp/index.html",
-    "precache-manifest.b9eaa4d8a5847fa254ef5c006fc8ce49.js": "/ImageLabel-DApp/precache-manifest.b9eaa4d8a5847fa254ef5c006fc8ce49.js",
+    "precache-manifest.71eb1c3a02683a63b009a86f7d5c9cdf.js": "/ImageLabel-DApp/precache-manifest.71eb1c3a02683a63b009a86f7d5c9cdf.js",
     "service-worker.js": "/ImageLabel-DApp/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/ImageLabel-DApp/static/css/main.5ecd60fb.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.c0afe411.js",
-    "static/js/2.9cf025fe.chunk.js",
+    "static/js/2.41374764.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.20c293f4.chunk.js"
+    "static/js/main.fdbaf7e1.chunk.js"
   ]
 }
