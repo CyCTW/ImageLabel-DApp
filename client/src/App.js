@@ -4,6 +4,9 @@ import getWeb3 from "./getWeb3";
 import ImageLabelContract from "./contracts/ImageLabel.json";
 import { useWeb3React } from "@web3-react/core"
 import { injected } from "./components/wallet/Connectors"
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Button, Flex, Box, Heading, Spacer, Text } from '@chakra-ui/react'
+import Uploader from './components/uploader/Uploader';
+import Labeler from './components/labeler/Labeler';
 
 
 function App() {
@@ -70,26 +73,67 @@ function App() {
     }
    }, []);
    
-   const handleClick = async () => {
 
-      await contract.methods.uploadRawImage("testaa").send({ from: account });
-      // await contract.methods.set(5).send({ from: account });
-      const response = await contract.methods.getNum().call();
-      console.log("res:", response)
 
-      setStorageValue(response);
+   const handleGetSupply = async () => {
+    const supply = await contract.methods.getTotalSupply().call();
+    console.log("supply", supply)
    }
-
+   
    return (
      <>
-      <button onClick={handleClick}>Init contract</button>
-      <button onClick={connect}>Connect</button>
-      <button onClick={disconnect}>Disconnect</button>
-      <p>storageValue: {storageValue}</p>
-      {active ? <span>Connected with <b>{account}</b></span> : <span>Not connected</span>}
-      {/* <p>Your account: {accounts && accounts[0]}</p> */}
+      <Flex bg='teal.500' p='3' mb='3'>
+        <Box>
+          :)
+        </Box>
+        <Spacer />
+        <Box p='2'>
+          <Heading size='md'>Image Labeling to Earn!</Heading>
+        </Box>
+        <Spacer />
+        <Box>
+          {
+          active ?<Button onClick={disconnect}>Disconnect</Button> : <Button onClick={connect}>Connect</Button>
+          }
+        </Box>
+      </Flex>
 
-      
+      {active ? 
+      <>
+      <Flex justify='center'>
+        <Tabs variant='soft-rounded' colorScheme='green'>
+        <Text m='3'>Hello, you connected with <b>{account}</b></Text> 
+
+        <TabList>
+          <Tab>I am Image Uploader!</Tab>
+          <Tab>I am Image Labeler!</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <Uploader 
+              contract={contract}
+              web3={web3}
+              account={account}
+            />
+            <Button onClick={handleGetSupply}>Get supply</Button>
+          </TabPanel>
+          <TabPanel>
+            <Labeler 
+              contract={contract}
+              web3={web3}
+              account={account}
+            />
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+      </Flex>
+    </>
+      : 
+      <Flex justify='center'>
+        <span>Please collect to wallet in Rospten Network</span>
+        </Flex>
+        
+      }
     </>
    );
 }
