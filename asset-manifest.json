@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/ImageLabel-DApp/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/ImageLabel-DApp/static/js/main.c6564dae.chunk.js",
+    "main.js.map": "/ImageLabel-DApp/static/js/main.c6564dae.chunk.js.map",
+    "runtime-main.js": "/ImageLabel-DApp/static/js/runtime-main.c0afe411.js",
+    "runtime-main.js.map": "/ImageLabel-DApp/static/js/runtime-main.c0afe411.js.map",
+    "static/js/2.a5b78b3f.chunk.js": "/ImageLabel-DApp/static/js/2.a5b78b3f.chunk.js",
+    "static/js/2.a5b78b3f.chunk.js.map": "/ImageLabel-DApp/static/js/2.a5b78b3f.chunk.js.map",
+    "index.html": "/ImageLabel-DApp/index.html",
+    "precache-manifest.18f272e0c4249bbc71abbdb0ac067ec0.js": "/ImageLabel-DApp/precache-manifest.18f272e0c4249bbc71abbdb0ac067ec0.js",
+    "service-worker.js": "/ImageLabel-DApp/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/ImageLabel-DApp/static/css/main.5ecd60fb.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c0afe411.js",
+    "static/js/2.a5b78b3f.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.c6564dae.chunk.js"
+  ]
+}
