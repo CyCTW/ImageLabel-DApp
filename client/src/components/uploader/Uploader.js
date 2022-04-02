@@ -1,11 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {
-  Button,
-  Input,
-  NumberInput,
-  NumberInputField,
-  Text,
-} from "@chakra-ui/react";
+import React, { useState } from "react";
+import { Button, Input, Text } from "@chakra-ui/react";
 import { create } from "ipfs-http-client";
 
 const client = create("https://ipfs.infura.io:5001/api/v0");
@@ -13,7 +7,7 @@ const client = create("https://ipfs.infura.io:5001/api/v0");
 function Uploader({ web3, account, contract }) {
   const [fileUrl, setFileUrl] = useState(``);
   const [price, setPrice] = useState(`0.0005`);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const submitToContract = async () => {
     setLoading(true);
@@ -42,13 +36,17 @@ function Uploader({ web3, account, contract }) {
   };
   return (
     <>
-      <Text fontSize='lg' m='3'>1. Input reward you want to pay to labeler in <b>ETH</b></Text>
+      <Text fontSize="lg" m="3">
+        1. Input reward you want to pay to labeler in <b>ETH</b>
+      </Text>
       <Input onChange={handlePrice} value={price} />
-      <Text fontSize='lg' m='3'>2. Upload your unlabeled image</Text>
+      <Text fontSize="lg" m="3">
+        2. Upload your unlabeled image
+      </Text>
       <input type="file" onChange={onUpload} />
       {fileUrl && (
         <>
-          <img src={fileUrl} width="700px" />
+          <img src={fileUrl} width="700px" alt="none" />
           <Button m="3" onClick={submitToContract} isLoading={loading}>
             Upload
           </Button>

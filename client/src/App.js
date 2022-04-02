@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import getWeb3 from "./getWeb3";
 // import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import ImageLabelContract from "./contracts/ImageLabel.json";
@@ -23,7 +23,7 @@ import Uploader from "./components/uploader/Uploader";
 import Labeler from "./components/labeler/Labeler";
 import githubLogo from './github-logo.png'
 function App() {
-  const { active, account, library, connector, activate, deactivate } =
+  const { active, account, activate, deactivate } =
     useWeb3React();
   const [web3, setWeb3] = useState("");
   const [contract, setContract] = useState("");

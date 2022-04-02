@@ -5,12 +5,9 @@ import {
   AlertDialogContent,
   AlertDialogFooter,
   Button,
-  Input,
-  Text,
-  useDisclosure,
   AlertDialogOverlay,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 function RewardDialog({
   rewardDialogOpen,
