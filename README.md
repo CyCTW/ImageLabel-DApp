@@ -1,4 +1,6 @@
 # Image Labeling to Earn! :moneybag:
+[![Node.js CI](https://github.com/CyCTW/ImageLabel-DApp/actions/workflows/node.js.yml/badge.svg?branch=ropsten)](https://github.com/CyCTW/ImageLabel-DApp/actions/workflows/node.js.yml)
+
 Image Labeling to Earn is a simple DApp (Decentralized Application) that make people solve trivial tasks and earn little money. 
 
 There are two roles in thie Dapp, **data provider and labeler.** Data provider provide small fee and their unlabeled images, which may be further used into machine learning training. 
